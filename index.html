@@ -2,7 +2,7 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    <meta content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
           name="viewport">
     <meta content="ie=edge" http-equiv="X-UA-Compatible">
     <meta content="Pietruszewski Michał" name="author">
@@ -97,7 +97,7 @@
             <p id="grampohone-aside-text">Naciśnij by posłuchać: -></p>
             <div class="gramophone">
                 <img alt="Gramophone" src="record.webp">
-                <audio autoplay loop src="music.mp3"></audio>
+                <audio autoplay loop src=" "></audio>
             </div>
         </div>
     </footer>
@@ -186,9 +186,11 @@
     ];
     songs = songnames.map(songname => `songs/${songname}`);
     shuffle(songs);
-    audio.src = songs[0];
+    let text = songs[0].toString();
+    text = text.split('.').slice(1).join('.');
+    text = text.split('.').slice(0);
+    gramophoneAsideText.innerHTML = 'Naciśnij by posłuchać: <span>' + text[0] + '</span> ->';
     audio.pause();
-
 
     gramophone.addEventListener('click', () =>
     {

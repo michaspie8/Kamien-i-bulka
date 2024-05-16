@@ -236,6 +236,9 @@ main #main-tytul {
   font-size: 4em;
   pointer-events: none;
 }
+main #main-tytul > * {
+  user-select: none;
+}
 .theme-dark main #main-tytul {
   color: #F2BF26;
 }

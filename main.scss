@@ -70,6 +70,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+
     font-size: 3rem;
     @include customize(theme) {
       color: getValue('light');
@@ -235,6 +236,9 @@ main {
     font-family: map-get(map-get($fonts, primary), font-family);
     font-size: 4em;
     pointer-events: none;
+    &>*{
+      user-select: none;
+    }
     @include customize(theme) {
       color: getValue('text');
     }
