@@ -1,0 +1,62 @@
+//add colortheme variables
+$themes: (
+        dark: (
+                text: #F2BF26,
+                background: #38242D,
+                primary: #F2D026,
+                secoundary: #F27831,
+                accent: #8D2A58,
+                dark: #38242D,
+                light: #C4B482
+        ),
+        light: (
+                text: #8C2A58,
+                background: #F2C029,
+                primary: #8C2769,
+                secoundary: #F27830,
+                accent: #889D4E,
+                dark: #38242D,
+                light: #FFE9A8
+        )
+);
+//add font variables, import otf from Fonts folder
+$fonts: (
+        primary:(
+                font-family: 'DeltaHeyMaxNine',
+                src: './Fonts/DHMN.woff'
+        ),
+        secoundary:(
+                font-family: 'Poetsen One',
+                src: './Fonts/PoetsenOne-Regular.ttf'
+        )
+);
+
+@mixin customize($arg: theme) {
+  $array: $themes;
+  $prefix: theme;
+
+  @if ($arg == theme) {
+    $array: $themes;
+    $prefix: theme;
+  } @else if ($arg == font) {
+    $array: $fonts;
+    $prefix: font;
+  }
+
+  @each $theme, $map in $array {
+    .#{$prefix}-#{$theme} & {
+      $array-map: () !global;
+      @each $key, $submap in $map {
+        $value: map-get(map-get($array, $theme), '#{$key}');
+        $array-map: map-merge($array-map, ($key: $value)) !global;
+      }
+
+      @content;
+      $array-map: null !global;
+    }
+  }
+}
+
+@function getValue($key) {
+  @return map-get($array-map, $key);
+}
