@@ -591,5 +591,26 @@ div.rotating {
     transform: rotate(360deg);
   }
 }
+/* main.css */
+/* ... */
+.table-section {
+  margin-top: 2rem;
+}
+.table-section table {
+  border-collapse: collapse;
+  width: 100%;
+}
+.table-section th, .table-section td {
+  border: 1px solid black;
+  padding: 8px;
+  text-align: left;
+}
+.table-section th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+.table-section tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
 
 /*# sourceMappingURL=main.css.map */
