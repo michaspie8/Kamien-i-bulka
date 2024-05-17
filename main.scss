@@ -64,20 +64,22 @@ body {
   font-family: map-get(map-get($fonts, secoundary), font-family);
 }
 
-  .full-width-text {
-    height: 20rem;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.full-width-text {
+  height: 20rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    font-size: 3rem;
-    @include customize(theme) {
-      color: getValue('light');
-      background-color: getValue('secoundary');
-    }
+  font-size: 3rem;
+  @include customize(theme) {
+    color: getValue('light');
+    background-color: getValue('text');
   }
+}
+
 .main-article-container {
+  padding-top: 5rem;
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
@@ -85,7 +87,6 @@ body {
     color: getValue('text');
     background-color: getValue('background');
   }
-
 
 
   article {
@@ -133,12 +134,14 @@ body {
 
     a {
       font-size: 1rem;
-      color: #337ab7;
-      text-decoration: none;
-      transition: color 0.2s ease;
+      @include customize(theme) {
+        color: getValue('link');
+        text-decoration: none;
+        transition: color 0.2s ease;
 
-      &:hover {
-        color: #23527c;
+        &:hover {
+          color: darken(getValue('link'), 10%);
+        }
       }
     }
 
@@ -213,8 +216,10 @@ header {
   @include customize(theme) {
     color: getValue('background');
     background-color: getValue('dark');
-    path{stroke: getValue('light');
-  }}
+    path {
+      stroke: getValue('light');
+    }
+  }
   font-family: 'DeltaHeyMaxNine';
 }
 
@@ -236,9 +241,11 @@ main {
     font-family: map-get(map-get($fonts, primary), font-family);
     font-size: 4em;
     pointer-events: none;
-    &>*{
+
+    & > * {
       user-select: none;
     }
+
     @include customize(theme) {
       color: getValue('text');
     }
@@ -597,23 +604,23 @@ div.rotating {
   margin-top: 2rem;
 
 
-table {
-  border-collapse: collapse;
-  width: 100%;
-}
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
 
-th, td {
-  border: 1px solid black;
-  padding: 8px;
-  text-align: left;
-}
+  th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+  }
 
-th {
-  background-color: #f2f2f2;
-  font-weight: bold;
-}
+  th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
 
-tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
 }
