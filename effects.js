@@ -1,3 +1,5 @@
+
+
 class MorphingText
 {
 
@@ -250,3 +252,22 @@ class MorphingText
 
 }
 
+
+//for all p, h2, h3, h4, h5, h6 elements if they have class "morph" add morphing effect
+const morphElements = document.querySelectorAll("p, h1, h2, h3, h4, h5, h6");
+morphElements.forEach((element) =>
+{
+    if (element.classList.contains("morph-manual"))
+    {
+        let m = new MorphingText(element, null, false);
+        element.addEventListener("mouseenter", () =>
+        {
+            m.morphText();
+            console.log("morph");
+        });
+        console.log("morph");
+    }
+    if (element.classList.contains("morph"))
+        new MorphingText(element);
+
+});

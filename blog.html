@@ -2,15 +2,29 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <meta content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    <meta content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0"
           name="viewport">
     <meta content="ie=edge" http-equiv="X-UA-Compatible">
     <meta content="Pietruszewski Michał" name="author">
+    <meta content="A taka se stornka fajna" name="description">
     <link href="main.css" rel="stylesheet" type="text/css">
     <link href="record.webp" rel="icon" type="image/x-icon">
+
     <title>Kamień i bułka</title>
 </head>
 <body class="theme-light font-secoundary">
+<div class="scroll-arrow-container">
+    <div class="scroll-arrow up">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 3 18 9"></polyline>
+        </svg>
+    </div>
+    <div class="scroll-arrow down">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="18 15 12 21 6 15"></polyline>
+        </svg>
+    </div>
+</div>
 <div class="container">
     <header>
         <nav>
@@ -83,119 +97,37 @@
             </div>
         </div>
     </footer>
-</div>
-<script src="effects.js"></script>
+</div><script src="effects.js"></script>
+<script src="mobile-utils.js"></script>
+<script src="theme-utils.js"></script>
+<script src="gramophone.js"></script>
 <script>
-    //set global color to light (delete class dark and add class light)
-    function setTheme(theme)
-    {
-        document.body.classList.remove("theme-light", "theme-dark");
-        document.body.classList.add(`theme-${theme}`);
-    }
-
     //use morphing effect on h2
     const h2 = document.querySelector("#main-tytul");
-    //for all p, h2, h3, h4, h5, h6 elements if they have class "morph" add morphing effect
-    const morphElements = document.querySelectorAll("p, h1, h2, h3, h4, h5, h6");
-    morphElements.forEach((element) =>
-    {
-        if (element.classList.contains("morph-manual"))
-        {
-            let m = new MorphingText(element, null, false);
-            element.addEventListener("mouseenter", () =>
-            {
-                m.morphText();
-                console.log("morph");
-            });
-            console.log("morph");
-        }
-        if (element.classList.contains("morph"))
-            new MorphingText(element);
-
-    });
     setTheme("light");
 
-    document.getElementById('mobile-dropdown-button').addEventListener('click', () =>
-    {
-        const dropdownList = document.getElementById('mobile-dropdown-list');
-        const isExpanded = dropdownList.classList.contains('expanded');
-        const button = document.getElementById('mobile-dropdown-button');
-        if (isExpanded)
-        {
-            dropdownList.classList.remove('expanded');
-            dropdownList.classList.add('collapsed');
-            button.setAttribute('aria-expanded', 'false');
-            button.classList.remove('expanded');
-            button.classList.add('collapsed');
+    // Add this to your JavaScript file
+    const upArrow = document.querySelector('.scroll-arrow.up');
+    const downArrow = document.querySelector('.scroll-arrow.down');
 
-        } else
-        {
-            dropdownList.classList.add('expanded');
-            dropdownList.classList.remove('collapsed');
-            button.classList.remove('collapsed');
-            button.classList.add('expanded');
-            button.setAttribute('aria-expanded', 'true');
+    window.addEventListener('scroll', () => {
+        const scrollPosition = window.scrollY;
+        const windowHeight = window.innerHeight;
+        const documentHeight = document.body.offsetHeight;
+
+        if (scrollPosition > 0) {
+            upArrow.classList.add('animate');
+        } else {
+            upArrow.classList.remove('animate');
+        }
+
+        if (scrollPosition < documentHeight - windowHeight) {
+            downArrow.classList.add('animate');
+        } else {
+            downArrow.classList.remove('animate');
         }
     });
-
-    function shuffle(array)
-    {
-        for (let i = array.length - 1; i > 0; i--)
-        {
-            const j = Math.floor(Math.random() * (i + 1));
-            [array[i], array[j]] = [array[j], array[i]];
-        }
-    }
-
-    const gramophone = document.querySelector('.gramophone');
-    const gramophoneAsideText = document.querySelector('#grampohone-aside-text');
-    const audio = document.querySelector('audio');
-    //songs are all song from songs folder
-    songnames = [
-        "01.Purple Haze.mp3",
-        "02.Hey Joe.mp3",
-        "03.Crosstown Traffic.mp3",
-        "04.The Wind Cries Mary.mp3",
-        "05.Fire.mp3",
-        "06.Highway Chile.mp3",
-        "07.Little Wing.mp3",
-        "08.All Along the Watchtower.mp3",
-        "09.Manic Depression.mp3",
-        "10.Foxy Lady.mp3",
-        "13.Castles Made of Sand.mp3",
-        "19.Voodoo Child (Slight Return).mp3",
-        "24.Rainy Day, Dream Away.mp3",
-    ];
-    songs = songnames.map(songname => `songs/${songname}`);
-    shuffle(songs);
-    let text = songs[0].toString();
-    text = text.split('.').slice(1).join('.');
-    text = text.split('.').slice(0);
-    gramophoneAsideText.innerHTML = 'Naciśnij by posłuchać: <span>' + text[0] + '</span> ->';
-    audio.pause();
-
-    gramophone.addEventListener('click', () =>
-    {
-        gramophone.classList.toggle('rotating');
-        let text = "";
-        if (gramophone.classList.contains('rotating'))
-        {
-            audio.src = songs[0];
-            audio.play();
-            text = songs[0].toString();
-            text = text.split('.').slice(1);
-            gramophoneAsideText.innerHTML = 'Teraz odtwarzane: <span>' + text[0] + '</span> Naciśnij by zatrzymać ->';
-        } else
-        {
-            audio.pause();
-            shuffle(songs);
-            text = songs[0].toString();
-            text = text.split('.').slice(1).join('.');
-            text = text.split('.').slice(0);
-            gramophoneAsideText.innerHTML = 'Naciśnij by posłuchać: <span>' + text[0] + '</span> ->';
-        }
-    });
-
 </script>
 </body>
 </html>
+

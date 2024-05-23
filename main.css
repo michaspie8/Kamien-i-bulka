@@ -19,6 +19,64 @@
   position: absolute;
 }
 
+.scroll-arrow-container {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 100%;
+  width: 2rem;
+  top: 0;
+  right: 0; /* adjust the distance from the right corner */
+  z-index: 1;
+  font-size: 1rem;
+  color: #333;
+  cursor: pointer;
+  transition: opacity 0.3s; /* add animation effect */
+  padding: 5rem 0;
+  gap: 1rem;
+}
+
+.scroll-arrow.up {
+  top: 10rem; /* adjust the distance from the top corner */
+}
+
+.scroll-arrow.down {
+  bottom: 10rem; /* adjust the distance from the bottom corner */
+}
+
+/* Add animation effect */
+.scroll-arrow.up.animate {
+  animation: up-arrow-animation 0.5s infinite;
+}
+
+.scroll-arrow.down.animate {
+  animation: down-arrow-animation 0.5s infinite;
+}
+
+@keyframes up-arrow-animation {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes down-arrow-animation {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
 body {
   -ms-overflow-style: none;
   margin: 0;
@@ -65,6 +123,7 @@ body::-webkit-scrollbar {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 0 1rem;
   font-size: 3rem;
 }
 .theme-dark .full-width-text {
@@ -89,6 +148,84 @@ body::-webkit-scrollbar {
 .theme-light .main-article-container {
   color: #8C2A58;
   background-color: #F2C029;
+}
+.main-article-container .main-one {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+}
+.theme-dark .main-article-container .main-one {
+  color: #38242D;
+  background-color: #C4B482;
+}
+.theme-light .main-article-container .main-one {
+  color: #38242D;
+  background-color: #FFE9A8;
+}
+.main-article-container .main-one h3 {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  font-family: DeltaHeyMaxNine;
+}
+.main-article-container .main-one div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+}
+.main-article-container .main-one div img {
+  max-width: 100%;
+  max-height: 15rem;
+  margin-bottom: 0.5rem;
+}
+.main-article-container .main-one p {
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+.main-article-container .main-one a {
+  font-size: 1rem;
+}
+.theme-dark .main-article-container .main-one a {
+  color: #514E9D;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.theme-dark .main-article-container .main-one a:hover {
+  color: #3f3d7b;
+}
+.theme-light .main-article-container .main-one a {
+  color: #514E9D;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.theme-light .main-article-container .main-one a:hover {
+  color: #3f3d7b;
+}
+@media screen and (min-width: 768px) {
+  .main-article-container .main-one article {
+    flex-direction: row;
+    align-items: center;
+    padding: 3rem;
+  }
+  .main-article-container .main-one article h3 {
+    font-size: 2rem;
+  }
+  .main-article-container .main-one article img {
+    width: 40%;
+    height: auto;
+    margin-right: 2rem;
+  }
+  .main-article-container .main-one article p {
+    font-size: 1.2rem;
+  }
 }
 .main-article-container article {
   margin: 2rem 2rem;
@@ -116,6 +253,11 @@ body::-webkit-scrollbar {
   margin-top: 0.25rem;
   font-family: DeltaHeyMaxNine;
 }
+@media screen and (max-width: 768px) {
+  .main-article-container article h3 {
+    font-size: 1.5rem;
+  }
+}
 .main-article-container article div {
   display: flex;
   justify-content: center;
@@ -126,6 +268,12 @@ body::-webkit-scrollbar {
   max-width: 100%;
   max-height: 15rem;
   margin-bottom: 0.5rem;
+}
+@media screen and (max-width: 768px) {
+  .main-article-container article div img {
+    max-width: 100%;
+    max-height: 5rem;
+  }
 }
 .main-article-container article p {
   font-size: 1rem;

@@ -27,6 +27,72 @@ $breakpoints: (
   position: absolute;
 }
 
+
+//start scroll arrow
+
+.scroll-arrow-container {
+
+    position: fixed;
+    display: flex;
+  flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 100%;
+    width: 2rem;
+    top: 0;
+  right: 0; /* adjust the distance from the right corner */
+  z-index: 1;
+  font-size: 1rem;
+  color: #333;
+  cursor: pointer;
+  transition: opacity 0.3s; /* add animation effect */
+  padding: 5rem 0;
+  gap: 1rem;
+
+}
+
+.scroll-arrow.up {
+  top: 10rem; /* adjust the distance from the top corner */
+}
+
+.scroll-arrow.down {
+  bottom: 10rem; /* adjust the distance from the bottom corner */
+}
+
+/* Add animation effect */
+.scroll-arrow.up.animate {
+  animation: up-arrow-animation 0.5s infinite;
+}
+
+.scroll-arrow.down.animate {
+  animation: down-arrow-animation 0.5s infinite;
+}
+
+@keyframes up-arrow-animation {
+  0% {
+    transform:  translateY(0);
+  }
+  50% {
+    transform:  translateY(-5px);
+  }
+  100% {
+    transform:  translateY(0);
+  }
+}
+
+@keyframes down-arrow-animation {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+// end scroll arrow
+
 body {
   &::-webkit-scrollbar {
     display: none;
@@ -68,14 +134,17 @@ body {
   height: 20rem;
   text-align: center;
   display: flex;
+
   justify-content: center;
   align-items: center;
+    padding: 0 1rem;
 
   font-size: 3rem;
   @include customize(theme) {
     color: getValue('light');
     background-color: getValue('text');
   }
+
 }
 
 .main-article-container {
@@ -88,6 +157,84 @@ body {
     background-color: getValue('background');
   }
 
+  .main-one{
+  //  main separated from other content that occupies whole page, has img and text but without articles, just inside itself
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 1rem;
+    margin: 1rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+    @include customize(theme) {
+      color: getValue('dark');
+      background-color: getValue('light');
+    }
+
+    h3 {
+      font-size: 3rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      font-family: DeltaHeyMaxNine;
+    }
+
+    div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 80%;
+
+      img {
+        max-width: 100%;
+        max-height: 15rem;
+        margin-bottom: 0.5rem;
+      }
+    }
+
+    p {
+      font-size: 1rem;
+      margin-bottom: 2rem;
+      margin-left: 2rem;
+      margin-right: 2rem;
+    }
+
+    a {
+      font-size: 1rem;
+      @include customize(theme) {
+        color: getValue('link');
+        text-decoration: none;
+        transition: color 0.2s ease;
+
+        &:hover {
+          color: darken(getValue('link'), 10%);
+        }
+      }
+    }
+
+    @media screen and (min-width: 768px) {
+      article {
+        flex-direction: row;
+        align-items: center;
+        padding: 3rem;
+
+        h3 {
+          font-size: 2rem;
+        }
+
+        img {
+          width: 40%;
+          height: auto;
+          margin-right: 2rem;
+        }
+
+        p {
+          font-size: 1.2rem;
+        }
+
+      }
+    }
+  }
 
   article {
     margin: 2rem 2rem;
@@ -105,6 +252,9 @@ body {
     box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
 
     h3 {
+      @media  screen and (max-width: 768px) {
+        font-size: 1.5rem;
+      }
       font-size: 3rem;
       font-weight: bold;
       margin-bottom: 1rem;
@@ -119,6 +269,10 @@ body {
       width: 80%;
 
       img {
+        @media  screen and (max-width: 768px) {
+          max-width: 100%;
+          max-height: 5rem;
+        }
         max-width: 100%;
         max-height: 15rem;
         margin-bottom: 0.5rem;
