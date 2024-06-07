@@ -29,12 +29,11 @@
     <header>
         <nav>
             <ul class="list list-2">
-                <li><a href="theory.html">Teoria muzyki</a></li>
-                <li><a class="selected" href="blog.html">Blog o muzyce</a></li>
+                <li><a class="selected" href="theory.html">Teoria muzyki</a></li>
+                <li><a href="blog.html">Blog o muzyce</a></li>
             </ul>
-            <h2 class="mobile-title">
-                <span>Kamień i bułka</span>
-            </h2>
+            <h1 class="mobile-title">
+                <span>Kamień i bułka</span></h1>
             <ul class="list list-1">
                 <li><a href="index.html">Strona główna</a></li>
                 <li><a href="contact.html">O mnie</a></li>
@@ -51,8 +50,8 @@
         </nav>
 
         <ul class="mobile-dropdown-list" id="mobile-dropdown-list">
-            <li><a href="theory.html">Teoria muzyki</a></li>
-            <li><a class="selected" href="blog.html">Blog o muzyce</a></li>
+            <li><a class="selected" href="theory.html">Teoria muzyki</a></li>
+            <li><a href="blog.html">Blog o muzyce</a></li>
             <li><a href="index.html">Strona główna</a></li>
             <li><a href="contact.html">O mnie</a></li>
         </ul>
@@ -60,43 +59,70 @@
     <main>
         <h1 class="morph font-primary" id="main-tytul">
             <span>Kamień i bułka</span>
-            <span>Rock and blog</span>
+            <span>Teoria muzyki</span>
         </h1>
-        <section class="main-article-container">
-            <h3 class="full-width-text"> Witaj na blogu poświęconemu muzyce! </h3>
-            <article>
-                <h3>Najlepsi gitarzyści w histori rocka!</h3>
-                <div>
-                    <img alt="me" src="img.png">
-                </div>
-                <p> Od buntowniczych riffów Jimiego Hendrixa po melancholię Davida Gilmoura, czyli zestawienie
-                    największych gitarzystów rockowych! Poznaj najbardziej wpływowych i najznakomistszych mistrzów
-                    gitary rockowej rewolucji! Czy twój ulubiony artysta znalazł się na szczycie?"</p>
-                <a href="blog-1.html">Przeczytaj więcej...</a>
-            </article>
-        </section>
-        <svg id="filters">
-            <defs>
-                <filter id="threshold">
-                    <feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0
+<section class="table-section">
+    <h2>Table Example</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Column 1</th>
+            <th>Column 2</th>
+            <th>Column 3</th>
+            <th>Column 4</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Row 1, Column 1</td>
+            <td>Row 1, Column 2</td>
+            <td>Row 1, Column 3</td>
+            <td>Row 1, Column 4</td>
+        </tr>
+        <tr>
+            <td>Row 2, Column 1</td>
+            <td>Row 2, Column 2</td>
+            <td>Row 2, Column 3</td>
+            <td>Row 2, Column 4</td>
+        </tr>
+        <tr>
+            <td>Row 3, Column 1</td>
+            <td>Row 3, Column 2</td>
+            <td>Row 3, Column 3</td>
+            <td>Row 3, Column 4</td>
+        </tr>
+        <tr>
+            <td>Row 4, Column 1</td>
+            <td>Row 4, Column 2</td>
+            <td>Row 4, Column 3</td>
+            <td>Row 4, Column 4</td>
+        </tr>
+        </tbody>
+    </table>
+</section>
+<svg id="filters">
+    <defs>
+        <filter id="threshold">
+            <feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0
                   0 1 0 0 0
                   0 0 1 0 0
                   0 0 0 255 -140"/>
-                </filter>
-            </defs>
-        </svg>
-    </main>
-    <footer>
-        <p>&copy; Pietruszewski 2024 </p>
-        <div>
-            <p id="grampohone-aside-text">Naciśnij by posłuchać: -></p>
-            <div class="gramophone">
-                <img alt="Gramophone" src="record.webp">
-                <audio autoplay loop src=" "></audio>
-            </div>
+        </filter>
+    </defs>
+</svg>
+</main>
+<footer>
+    <p>&copy; Pietruszewski 2024 </p>
+    <div>
+        <p id="grampohone-aside-text">Naciśnij by posłuchać: -></p>
+        <div class="gramophone">
+            <img alt="Gramophone" src="record.webp">
+            <audio autoplay loop src="null.mp3"></audio>
         </div>
-    </footer>
-</div><script src="effects.js"></script>
+    </div>
+</footer>
+</div>
+<script src="effects.js"></script>
 <script src="mobile-utils.js"></script>
 <script src="theme-utils.js"></script>
 <script src="gramophone.js"></script>
@@ -129,4 +155,3 @@
 </script>
 </body>
 </html>
-
